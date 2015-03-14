@@ -81,8 +81,19 @@ setopt auto_pushd
 
 # alias
 setopt complete_aliases
-alias ll="ls -al --color"
-alias ls="ls --color"
+
+case "${OSTYPE}" in
+darwin*)
+   alias ls="ls -G"
+   alias ll="ls -lG"
+   alias la="ls -laG"
+   ;;
+ linux*)
+   alias ls='ls --color'
+   alias ll='ls -l --color'
+   alias la='ls -la --color'
+   ;;
+esac
 alias du="du -h"
 alias df="df -h"
 alias vi="vim"
